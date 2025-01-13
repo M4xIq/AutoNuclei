@@ -48,7 +48,8 @@ cd AutoNuclei
 npm install
 
 # Install Nuclei
-go install -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest
+go install -v https://github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest
+git clone https://github.com/projectdiscovery/fuzzing-templates.git
 ```
 
 ## Usage
