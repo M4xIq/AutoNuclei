@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Nuclei</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <h1>Auto Nuclei</h1>
+                <div class="status-container">
+                    <span class="status-dot" aria-hidden="true"></span>
+                    <span id="status" role="status">Connected</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="scan-panel">
+            <div class="input-section">
+                <h2>Target URLs</h2>
+                <div class="input-group">
+                    <label for="targets">Enter target URLs:</label>
+                    <textarea 
+                        id="targets" 
+                        placeholder="Enter URLs (one per line)&#10;Example:&#10;https://example.com&#10;https://example.org"
+                        rows="6"
+                        aria-label="Target URLs"
+                    ></textarea>
+                </div>
+                <div class="input-group">
+                    <label for="template-select">Select Template:</label>
+                    <select id="template-select">
+                        <option value="default">Default</option>
+                        <option value="fuzzing-templates">Fuzzing Templates</option>
+                        <option value="custom">Custom Template</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="dast-mode" class="checkbox-label">
+                        <input type="checkbox" id="dast-mode">
+                        Enable DAST Mode
+                    </label>
+                </div>
+                <div class="button-group">
+                    <button id="start-scan" class="btn btn-primary" disabled>
+                        <i class="fas fa-play" aria-hidden="true"></i> Start Scan
+                    </button>
+                    <button id="clear-input" class="btn btn-secondary">
+                        <i class="fas fa-eraser" aria-hidden="true"></i> Clear
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="results-section">
+        <div class="section-header">
+    <h2>Active Scans</h2>
+</div>
+            <div id="activeScansList" class="scans-container"></div>
+
+            <div class="section-header">
+                <h2>Scan History</h2>
+                    </select>
+                </div>
+              
+            </div>
+            <div id="scanHistoryList" class="scans-container"></div>
+        </div>
+        <button id="clear-all-active" class="btn btn-danger btn-sm clear-all-btn">
+            <i class="fas fa-trash" aria-hidden="true"></i> Clear All Active
+        </button>
+        <button id="clear-all-history" class="btn btn-danger btn-sm">
+            <i class="fas fa-trash" aria-hidden="true"></i> Clear History
+        </button>
+    </main>
+
+    <template id="scanItemTemplate">
+        <div class="scan-item">
+            <div class="scan-header">
+                <div class="scan-info">
+                    <span class="scan-target"></span>
+                    <span class="scan-status"></span>
+                </div>
+                <div class="scan-timestamp"></div>
+            </div>
+            <div class="progress-bar">
+                <div class="progress"></div>
+            </div>
+            <div class="findings-container">
+                <h3>Results</h3>
+                <div class="table-container">
+                    <table class="results-table">
+                        <thead>
+                            <tr>
+                                <th>Template</th>
+                                <th>Type</th>
+                                <th>Severity</th>
+                                <th>Full URL</th>
+                                <th>Host</th>
+                                <th>Extra Details</th>
+                            </tr>
+                        </thead>
+                        <tbody class="findings-list"></tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="scan-controls">
+                <button class="btn btn-warning stop-scan-btn">
+                    <i class="fas fa-stop" aria-hidden="true"></i> Stop Scan
+                </button>
+                <button class="btn btn-danger delete-scan-btn">
+                    <i class="fas fa-trash" aria-hidden="true"></i> Delete
+                </button>
+                <button class="btn btn-secondary export-scan-btn">
+                    <i class="fas fa-download" aria-hidden="true"></i> Export Results
+                </button>
+                <button class="btn btn-info save-local-btn">
+                    <i class="fas fa-save" aria-hidden="true"></i> Save Locally
+                </button>
+            </div>
+        </div>
+    </template>
+
+    <div id="notifications" class="notifications-container" aria-live="polite"></div>
+
+    <script src="/main.js" defer></script>
+</body>
+</html>

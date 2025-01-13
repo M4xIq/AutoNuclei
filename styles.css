@@ -1,0 +1,497 @@
+/* ============================
+   Table of Contents
+   1. Variables
+   2. General Styles
+   3. Header and Navigation
+   4. Input Section
+   5. Buttons
+   6. Results Section
+   7. Scan Items
+   8. Notifications
+   9. Utilities
+   10. Responsive Design
+   11. Accessibility
+   12. Print Styles
+   13. Animations
+   ============================ */
+
+/* 1. Variables
+   ============================ */
+   :root {
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+    --success-color: #28a745;
+    --danger-color: #dc3545;
+    --warning-color: #ffc107;
+    --info-color: #17a2b8;
+    --background-dark: #121212;
+    --background-light: #1e1e1e;
+    --text-color: #e0e0e0;
+    --border-color: #333;
+}
+
+/* 2. General Styles
+   ============================ */
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-dark);
+    color: var(--text-color);
+    line-height: 1.6;
+    transition: background-color 0.3s ease;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* 3. Header and Navigation
+   ============================ */
+.header {
+    background: linear-gradient(to right, #1a1a1a, #2c2c2c);
+    color: #fff;
+    padding: 10px 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+}
+
+.status-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--danger-color);
+    transition: background-color 0.3s ease;
+}
+
+.status-dot.connected {
+    background: var(--success-color);
+}
+
+#status {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* 4. Input Section
+   ============================ */
+.scan-panel {
+    background: var(--background-light);
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+    margin-bottom: 30px;
+    transition: box-shadow 0.3s ease;
+}
+
+.scan-panel:hover {
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.input-section h2 {
+    margin-bottom: 20px;
+    color: #ffffff;
+    font-size: 1.8rem;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 10px;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: var(--text-color);
+    font-size: 1.1rem;
+}
+
+textarea#targets,
+.input-group select {
+    width: 98%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    background: #2c2c2c;
+    color: var(--text-color);
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+textarea#targets {
+    resize: vertical;
+    min-height: 100px;
+}
+
+textarea#targets::placeholder {
+    color: #999;
+}
+
+textarea#targets:focus,
+.input-group select:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+/* 5. Buttons
+   ============================ */
+   .btn {
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 10px; /* Added 10px margin to all sides */
+}
+
+/* ... rest of the button styles ... */
+
+/* ... rest of the button styles ... */
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary { background: var(--primary-color); color: #fff; }
+.btn-primary:hover { background: #0056b3; }
+
+.btn-secondary { background: var(--secondary-color); color: #fff; }
+.btn-secondary:hover { background: #5a6268; }
+
+.btn-danger { background: var(--danger-color); color: #fff; }
+.btn-danger:hover { background: #c82333; }
+
+.btn-warning { background: var(--warning-color); color: #212529; }
+.btn-warning:hover { background: #e0a800; }
+
+.btn-info { background: var(--info-color); color: #fff; }
+.btn-info:hover { background: #138496; }
+
+.button-group {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+/* 6. Results Section
+   ============================ */
+.results-section h2 {
+    margin-top: 10px;
+    font-size: 1.8rem;
+    color: var(--text-color);
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 10px;
+}
+
+.table-container {
+    overflow-x: auto;
+    margin-top: 20px;
+    background: var(--background-light);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.results-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 0.9rem;
+}
+
+.results-table th,
+.results-table td {
+    border: 1px solid var(--border-color);
+    padding: 12px;
+    text-align: left;
+}
+
+.results-table th {
+    background-color: #333;
+    font-weight: bold;
+    color: #ffffff;
+    text-transform: uppercase;
+}
+
+.results-table tr:nth-child(even) {
+    background-color: #2c2c2c;
+}
+
+.results-table tr:hover {
+    background-color: #444;
+}
+
+.results-table td {
+    transition: all 0.3s ease;
+}
+
+.results-table td a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.results-table td a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+/* 7. Scan Items
+   ============================ */
+.scan-item {
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    background: var(--background-light);
+    padding: 25px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.scan-item:hover {
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
+}
+
+.scan-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.scan-info {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.scan-status {
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+.scan-status.completed { background-color: var(--success-color); color: #fff; }
+.scan-status.running { background-color: var(--warning-color); color: #212529; }
+.scan-status.error { background-color: var(--danger-color); color: #fff; }
+
+.findings-container {
+    margin-top: 20px;
+}
+
+/* 8. Notifications
+   ============================ */
+.notifications-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.notification {
+    padding: 15px 25px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    font-size: 0.95rem;
+    color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.notification.info { background: var(--info-color); }
+.notification.success { background: var(--success-color); }
+.notification.error { background: var(--danger-color); }
+.notification.warning { background: var(--warning-color); color: #212529; }
+
+/* 9. Utilities
+   ============================ */
+.progress-bar {
+    width: 100%;
+    height: 10px;
+    background-color: #333;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.progress {
+    width: 0;
+    height: 100%;
+    background-color: var(--primary-color);
+    transition: width 0.5s ease;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: help;
+    margin-left: 5px;
+}
+
+.tooltip:hover::after {
+    content: attr(title);
+    position: absolute;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    z-index: 1;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.filter-controls {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.filter-controls label {
+    font-weight: bold;
+}
+
+.filter-controls select {
+    padding: 8px 12px;
+    border-radius: 5px;
+    border: 1px solid var(--border-color);
+    background-color: var(--background-light);
+    color: var(--text-color);
+    font-size: 1rem;
+}
+
+/* 10. Responsive Design
+   ============================ */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+
+    .button-group {
+        flex-direction: column;
+    }
+
+    .button-group .btn {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .scan-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .scan-timestamp {
+        margin-top: 10px;
+    }
+
+    .scan-controls {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .scan-controls .btn {
+        flex: 1 1 calc(50% - 5px);
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .navbar {
+        flex-direction: column;
+    }
+
+    .logo {
+        margin-bottom: 15px;
+    }
+}
+
+/* 11. Accessibility
+   ============================ */
+.btn:focus,
+select:focus,
+textarea:focus {
+    outline: 3px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+@media (prefers-contrast: high) {
+    body {
+        background-color: #000;
+        color: #fff;
+    }
+
+    .btn,
+    .input-group select,
+    textarea#targets {
+        border: 2px solid #fff;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+        animation: none !important;
+    }
+}
+
+/* 12. Print Styles
+   ============================ */
+@media print {
+    body {
+        background-color: #fff;
+        color: #000;
+    }
+
+    .scan-controls,
+    .input-section,
+    .notifications-container {
+        display: none;
+    }
+
+    .results-table {
+        border: 1px solid #000;
+    }
+}
+
+.clear-all-btn {
+    margin-bottom: 10px; 
+}
